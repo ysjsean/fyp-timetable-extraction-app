@@ -27,7 +27,7 @@ Built with `Streamlit`, `YOLOv8`, `pytesseract`, and custom timetable layout rul
 
 ## 🧱 Folder Structure
 ```
-📁 FYP-Timetable-App/
+📁 FYP-Timetable-Extraction-App/
 │
 ├── 📁 timetable_env/ 
 │   └─ Python virtual environment
