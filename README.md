@@ -175,8 +175,8 @@ chmod +x run.sh
 ## 📬 Author
 
 Final Year Project  
-Timetable Extraction to ICS Calendar Converter
+Timetable Extraction to ICS Calendar Converter  
 Developed by: **Sean Young Song Jie**  
-School: **Nanyang Technological University** 
+School: **Nanyang Technological University**  
 Matric Number: **U2122305F**  
-Academic Year: **2024/2025**
+Academic Year: **2024/2025**  
