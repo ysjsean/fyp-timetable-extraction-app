@@ -27,36 +27,36 @@ Built with `Streamlit`, `YOLOv8`, `pytesseract`, and custom timetable layout rul
 
 ## 🧱 Folder Structure
 ```
-📁 **FYP-Timetable-App/**
+📁 FYP-Timetable-App/
 │
-├── 📁 **timetable_env/**  
+├── 📁 timetable_env/ 
 │   └─ Python virtual environment
 │
-├── 📁 **timetable_project/**  
-│   ├── 🧠 `timetable_app.py`  
+├── 📁 timetable_project/  
+│   ├── 🧠 timetable_app.py  
 │   │ Main Streamlit entrypoint that launches the timetable-to-ICS app.
 │   │
-│   ├── 📄 `requirements.txt`  
+│   ├── 📄 requirements.txt  
 │   │ Clean list of only necessary packages.
 │   │
-│   ├── 📁 **yolov8/**  
+│   ├── 📁 yolov8/  
 │   │ Stores YOLOv8 model files (weights/configs) used for layout detection.
 │   │
-│   └── 📁 **scripts/**  
-│       ├── `extract_timetable.py` – Full pipeline for PDF + OCR + JSON conversion  
-│       ├── `layout_detector.py` – Handles YOLO layout prediction and fallback methods  
-│       └── 📁 **utils/**  
-│           ├── `constants.py` – Defines time slots, weeks, days, holidays  
-│           ├── `ocr_utils.py` – Text cleaning and preprocessing for OCR  
-│           └── `ui_helpers.py` – Time/date inputs and ICS export logic
+│   └── 📁 scripts/  
+│       ├── extract_timetable.py – Full pipeline for PDF + OCR + JSON conversion  
+│       ├── layout_detector.py – Handles YOLO layout prediction and fallback methods  
+│       └── 📁 utils/  
+│           ├── constants.py – Defines time slots, weeks, days, holidays  
+│           ├── ocr_utils.py – Text cleaning and preprocessing for OCR  
+│           └── ui_helpers.py – Time/date inputs and ICS export logic
 │
-├── ▶️ `run.bat`  
-│ One-click launcher for **Windows** (activates env + runs app)
+├── ▶️ run.bat  
+│ One-click launcher for Windows (activates env + runs app)
 │
-├── ▶️ `run.sh`  
-│ One-click launcher for **macOS/Linux** (source env + runs app)
+├── ▶️ run.sh  
+│ One-click launcher for macOS/Linux (source env + runs app)
 │
-└── 📘 `README.md`  
+└── 📘 README.md  
  The file you’re reading now ✨ includes setup, usage, and structure.
 ```
 ---
