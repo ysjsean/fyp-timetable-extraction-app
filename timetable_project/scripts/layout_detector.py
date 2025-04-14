@@ -1,5 +1,5 @@
 # layout_detector.py
-
+import os
 import pandas as pd
 import numpy as np
 from PIL import Image
@@ -7,7 +7,9 @@ from rapidfuzz import fuzz
 from scripts.utils.ocr_utils import clean_text
 from ultralytics import YOLO
 
-model = YOLO("./yolov8/runs/detect/train_3_class/weights/best.pt")  # Update if path changes
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "../yolov8/runs/detect/train_3_class/weights/best.pt")
+model = YOLO(MODEL_PATH)
 
 def run_yolo_detection(image: Image.Image):
     img_array = np.array(image.convert("RGB"))
