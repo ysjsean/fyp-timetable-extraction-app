@@ -26,7 +26,7 @@ Built with `Streamlit`, `YOLOv8`, `pytesseract`, and custom timetable layout rul
 ---
 
 ## 🧱 Folder Structure
-
+```
 📁 **FYP-Timetable-App/**
 │
 ├── 📁 **timetable_env/**  
@@ -58,7 +58,7 @@ Built with `Streamlit`, `YOLOv8`, `pytesseract`, and custom timetable layout rul
 │
 └── 📘 `README.md`  
  The file you’re reading now ✨ includes setup, usage, and structure.
-
+```
 ---
 
 ## 🛠️ Setup Instructions
@@ -175,7 +175,8 @@ chmod +x run.sh
 ## 📬 Author
 
 Final Year Project  
-Timetable Extraction to ICS Calendar Converter  
+Timetable Extraction to ICS Calendar Converter
 Developed by: **Sean Young Song Jie**  
+School: **Nanyang Technological University** 
 Matric Number: **U2122305F**  
 Academic Year: **2024/2025**
