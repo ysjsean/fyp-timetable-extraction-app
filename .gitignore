@@ -1,0 +1,35 @@
+# =============== PYTHON ===============
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+*.log
+
+# =============== VENV ===============
+timetable_env/
+env/
+venv/
+.venv/
+
+# =============== STREAMLIT ===============
+# Streamlit cache and config
+*/.streamlit
+
+# =============== FILES ===============
+*dataset
+*data
+
+# =============== OUTPUT FILES ===============
+*.ics
+*.pdf
+*.zip
+*.json
+train_*.jpg
+val_*.jpg
+
+# =============== OS SYSTEM FILES ===============
+.DS_Store
+Thumbs.db

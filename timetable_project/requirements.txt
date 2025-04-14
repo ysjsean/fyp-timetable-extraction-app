@@ -1,0 +1,13 @@
+streamlit
+pytesseract
+pdf2image
+pillow
+opencv-python
+pandas
+numpy
+python-dateutil
+rapidfuzz
+scikit-learn
+ultralytics
+ics
+pytz
