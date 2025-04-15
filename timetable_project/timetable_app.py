@@ -144,4 +144,4 @@ with st.expander("🛠 Developer Debug Info", expanded=False):
     st.text(f"PDF uploaded: {uploaded_pdf.name if uploaded_pdf else 'None'}")
     st.text(f"YOLOv8 model version: {yolo_version}")
     st.text(f"Streamlit version: {st.__version__}")
-    st.text("Extracted at:", timezone_converter(datetime.now().strftime('%d %b %y %H:%M:%S'), "Asia/Singapore"))
+    st.write("Extracted at:", timezone_converter(datetime.now().strftime('%d %b %y %H:%M:%S'), "Asia/Singapore"))
