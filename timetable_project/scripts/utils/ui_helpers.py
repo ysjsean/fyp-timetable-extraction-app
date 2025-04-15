@@ -19,7 +19,7 @@ def log_error(e):
     st.stop()
 
 def timezone_converter(date, zone):
-    timezone = pytz.timezone("Asia/Singapore")
+    timezone = pytz.timezone(zone)
     return timezone.localize(date)
 
 def get_week_index(w):
