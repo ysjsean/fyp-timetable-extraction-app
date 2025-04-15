@@ -171,17 +171,22 @@ This app is designed to work with PDF timetables that follow a grid layout simil
 
 ![Sample Timetable](./timetable_project/images/timetable_layout.png)
 
-✅ Each course block should include:
-1. Course Grids
-  - Holiday (If holiday clash)
-  - Course Code
-  - Group
-  - Location
-2. Week Row
-3. Date Range Row
-4. Time Slot Column
+1. **Course Grids**
+   - 🚫 *If a holiday clashes with a class, the holiday overrides the course block*
+   - 🆔 Course Code (e.g., `EG0001`)
+   - 🧑‍🤝‍🧑 Group (e.g., `G1`, `G3`)
+   - 🏫 Location (e.g., `TR201`, `LT2`)
 
-📌 Your PDF **does not need to be editable** — the app uses OCR + layout detection to extract everything automatically.
+2. **Week Row**  
+   Appears in each column cell, used to determine week repetition logic.
+
+3. **Date Range Row**  
+   Usually above the table, used to infer start dates.
+
+4. **Time Slot Column**  
+   Located on the far left — anchors the timetable’s grid structure.
+
+🧠 Don’t worry — the app uses **YOLOv8 layout detection + OCR** to handle all this automatically.
 
 ---
 
