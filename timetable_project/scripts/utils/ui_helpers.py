@@ -18,6 +18,10 @@ def log_error(e):
     st.exception(e)
     st.stop()
 
+def timezone_converter(date, zone):
+    timezone = pytz.timezone("Asia/Singapore")
+    return timezone.localize(date)
+
 def get_week_index(w):
     return WEEKS.index(w) if w in WEEKS else -1
 
@@ -225,8 +229,8 @@ def split_weeks_into_blocks(weeks):
 
 def generate_ics_from_courses(courses):
     cal = Calendar()
+    timezone = "Asia/Singapore"
     errors = []
-    sg = pytz.timezone("Asia/Singapore")
     all_events = []
 
     for idx, entry in enumerate(courses):
@@ -259,8 +263,8 @@ def generate_ics_from_courses(courses):
                 # ✅ Adjust only by week_diff to preserve original weekday
                 session_date = start_date + timedelta(weeks=week_diff)
 
-                dt_start = sg.localize(datetime(session_date.year, session_date.month, session_date.day, start_h, start_m))
-                dt_end = sg.localize(datetime(session_date.year, session_date.month, session_date.day, end_h, end_m))
+                dt_start = timezone_converter(datetime(session_date.year, session_date.month, session_date.day, start_h, start_m), timezone)
+                dt_end = timezone_converter(datetime(session_date.year, session_date.month, session_date.day, end_h, end_m), timezone)
 
                 e = Event()
                 e.name = f"{entry['courseCode']} ({entry['group']})"

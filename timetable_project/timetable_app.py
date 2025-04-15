@@ -5,7 +5,7 @@ from ultralytics import __version__ as yolo_version
 from datetime import datetime
 
 from scripts.utils.constants import DAYS, WEEKS
-from scripts.utils.ui_helpers import render_time_inputs, render_date_input, generate_ics_from_courses, log_error
+from scripts.utils.ui_helpers import render_time_inputs, render_date_input, generate_ics_from_courses, log_error, timezone_converter
 
 
 # To fix 2 issues:
@@ -21,11 +21,6 @@ torch.classes.__path__ = []
 
 st.set_page_config(page_title="Timetable to ICS", layout="wide")
 st.title("📅 Timetable → ICS Converter")
-
-
-with st.expander("📎 Model & Session Info"):
-    st.write("YOLOv8 version:", yolo_version)
-    st.write("Extracted at:", datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 st.markdown("""
 Upload your university timetable **PDF**, extract the schedule, review/edit all fields, and download as an `.ics` calendar file.
@@ -149,3 +144,4 @@ with st.expander("🛠 Developer Debug Info", expanded=False):
     st.text(f"PDF uploaded: {uploaded_pdf.name if uploaded_pdf else 'None'}")
     st.text(f"YOLOv8 model version: {yolo_version}")
     st.text(f"Streamlit version: {st.__version__}")
+    st.text("Extracted at:", timezone_converter(datetime.now().strftime('%d %b %y %H:%M:%S'), "Asia/Singapore"))
