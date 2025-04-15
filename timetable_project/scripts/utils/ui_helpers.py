@@ -5,12 +5,18 @@ import streamlit as st
 from ics import Calendar, Event
 from ics.grammar.parse import ContentLine
 import pytz
-
+import logging
 from datetime import datetime, timedelta
 from scripts.utils.constants import DAYS, WEEKS
 
 def red_alert(text):
     st.markdown(f'<div style="color: red; font-weight: bold;">⚠️ {text}</div>', unsafe_allow_html=True)
+
+def log_error(e):
+    logging.error("Exception occurred", exc_info=e)
+    st.error("🚨 Something went wrong. Please try another file or refresh.")
+    st.exception(e)
+    st.stop()
 
 def get_week_index(w):
     return WEEKS.index(w) if w in WEEKS else -1

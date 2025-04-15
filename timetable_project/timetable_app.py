@@ -1,9 +1,11 @@
 import streamlit as st
 import tempfile
 import uuid
+from ultralytics import __version__ as yolo_version
+from datetime import datetime
 
 from scripts.utils.constants import DAYS, WEEKS
-from scripts.utils.ui_helpers import render_time_inputs, render_date_input, generate_ics_from_courses
+from scripts.utils.ui_helpers import render_time_inputs, render_date_input, generate_ics_from_courses, log_error
 
 
 # To fix 2 issues:
@@ -19,6 +21,11 @@ torch.classes.__path__ = []
 
 st.set_page_config(page_title="Timetable to ICS", layout="wide")
 st.title("📅 Timetable → ICS Converter")
+
+
+with st.expander("📎 Model & Session Info"):
+    st.write("YOLOv8 version:", yolo_version)
+    st.write("Extracted at:", datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 st.markdown("""
 Upload your university timetable **PDF**, extract the schedule, review/edit all fields, and download as an `.ics` calendar file.
@@ -45,11 +52,16 @@ if uploaded_pdf and st.button("🧠 Extract Timetable"):
         tmp_path = tmp.name
 
     with st.spinner("Extracting timetable from PDF..."):
-        from scripts.extract_timetable import extract_timetable
-        extracted = extract_timetable(tmp_path)
-        for c in extracted:
-            c["id"] = str(uuid.uuid4())
-        st.session_state.courses = extracted
+        try:
+            from scripts.extract_timetable import extract_timetable
+            extracted = extract_timetable(tmp_path)
+            
+            for c in extracted:
+                c["id"] = str(uuid.uuid4())
+            st.session_state.courses = extracted
+
+        except Exception as e:
+            log_error(e)
 
 if "courses" not in st.session_state:
     st.session_state.courses = []
@@ -101,14 +113,15 @@ for idx, course in enumerate(st.session_state.courses):
         c1, c2 = st.columns([1, 3])
         course = render_date_input(c1, course, st.session_state.courses)
         c2.markdown("""
-                    🛈 Should be the calendar date of the selected day in the **first week** listed.
+                    🛈 Should be the **first occurance** date for the course
                     
                     🛈 Date format DD/MM/YYYY
                     """)
 
         course["note"] = st.text_area("Note (optional)", course["note"], key=f"note_{course['id']}")
 
-        if st.button(f"❌ Delete Course {course['courseCode']} ({course['group']})", key=f"delete_{course['id']}"):
+        delete_btn_name = f"❌ Delete Course {course['courseCode']} ({course['group']})" if (course['courseCode'] != "" and course['group'] != "") else f"❌ Delete New Course {idx+1}"
+        if st.button(delete_btn_name, key=f"delete_{course['id']}"):
             continue
 
         updated_courses.append(course)
@@ -130,3 +143,9 @@ if st.button("📥 Convert to ICS"):
 
         with open(tmp_path, "rb") as f:
             st.download_button("⬇️ Download ICS File", f, file_name="timetable.ics", mime="text/calendar")
+
+with st.expander("🛠 Developer Debug Info", expanded=False):
+    st.caption("This section helps debug upload and extraction issues.")
+    st.text(f"PDF uploaded: {uploaded_pdf.name if uploaded_pdf else 'None'}")
+    st.text(f"YOLOv8 model version: {yolo_version}")
+    st.text(f"Streamlit version: {st.__version__}")

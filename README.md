@@ -50,6 +50,9 @@ Built with `Streamlit`, `YOLOv8`, `pytesseract`, and custom timetable layout rul
 │           ├── ocr_utils.py – Text cleaning and preprocessing for OCR  
 │           └── ui_helpers.py – Time/date inputs and ICS export logic
 │
+├── 📄packages.txt 
+│ Configuration for deployment to be installed - Have to be in your PATH
+│
 ├── ▶️ run.bat  
 │ One-click launcher for Windows (activates env + runs app)
 │
@@ -160,6 +163,31 @@ Make `run.sh` executable:
 ```bash
 chmod +x run.sh
 ```
+---
+
+## 🧾 Sample Timetable Format
+
+This app is designed to work with PDF timetables that follow a grid layout similar to the one below:
+
+![Sample Timetable](./timetable_project/images/timetable_layout.png)
+
+✅ Each course block should include:
+1. Course Grids
+  - Holiday (If holiday clash)
+  - Course Code
+  - Group
+  - Location
+2. Week Row
+3. Date Range Row
+4. Time Slot Column
+
+📌 Your PDF **does not need to be editable** — the app uses OCR + layout detection to extract everything automatically.
+
+---
+
+## 🌐 Live Demo
+
+[Demo Link](https://ysjsean-fyp-timetable-extraction.streamlit.app/)
 
 ---
 
