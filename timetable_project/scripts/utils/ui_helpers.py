@@ -6,7 +6,6 @@ from ics import Calendar, Event
 from ics.grammar.parse import ContentLine
 import pytz
 import logging
-from datetime import datetime, timedelta
 from scripts.utils.constants import DAYS, WEEKS
 
 def red_alert(text):
@@ -103,8 +102,6 @@ def render_date_input(c1, course, all_courses):
     - Shows red alerts for missing or inferred values
     - Only updates if the user actually changes the date
     """
-    from scripts.utils.ui_helpers import get_inferred_start_date, extract_semester_year, red_alert
-    from datetime import datetime, date
 
     raw = str(course.get("startDate", "")).strip()
     parsed_date = None

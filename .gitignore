@@ -24,7 +24,7 @@ venv/
 
 # =============== OUTPUT FILES ===============
 *.ics
-*.pdf
+./timetable_project/*.pdf
 *.zip
 *.json
 train_*.jpg
